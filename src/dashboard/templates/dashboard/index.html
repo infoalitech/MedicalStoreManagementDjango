@@ -1,0 +1,106 @@
+
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+{% load static %}
+
+<div class="row">
+	<div class="container">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="\">Home</a></li>
+		</ol>
+
+<div class="row">
+	<div class=" col-lg-3" style="padding: 10px">
+	<div class="card " style="padding: 0px;">
+		<div class="card header" style="padding:10px; margin-bottom: 0px;">
+			<h6 style="text-align: center">Purchase</h6 >
+
+		</div>
+		<div class="card body" style="padding:10px;  margin-bottom: 0px;">
+			This Week: <br>
+			This Month: <br>
+			This Year: <br>
+			Total Purchase: <br>
+		</div>
+		<div class="card footer" style="padding:10px; margin-bottom: 0px; text-align: center; align-content: center;">
+			  {% if user.is_authenticated %}
+			<a href="\purchase" class="btn btn-dark btn-sm  form-control" >Go...</a>
+			{% endif %}
+		</div>
+	</div>
+	</div>
+	<div class=" col-lg-3" style="padding: 10px">
+	<div class="card " style="padding: 0px;">
+		<div class="card header" style="padding:10px; margin-bottom: 0px;">
+			<h6 style="text-align: center">Sale</h6 >
+		</div>
+		<div class="card body" style="padding:10px;  margin-bottom: 0px;">
+			This Week: <br>
+			This Month: <br>
+			This Year: <br>
+			Total Purchase: <br>
+			
+		</div>
+		<div class="card footer" style="padding:10px; margin-bottom: 0px; text-align: center; align-content: center;">
+			 {% if user.is_authenticated %}
+			<a href="\sale" class="btn btn-dark btn-sm  form-control" >Go...</a>
+			{% endif %}
+		</div>
+	</div>
+	</div>
+	<div class=" col-lg-3" style="padding: 10px">
+	<div class="card " style="padding: 0px;">
+		<div class="card header" style="padding:10px; margin-bottom: 0px;">
+			<h6 style="text-align: center">Payable</h6 >
+		</div>
+		<div class="card body" style="padding:10px;  margin-bottom: 0px;">
+			This Week: <br>
+			This Month: <br>
+			This Year: <br>
+			Total Purchase: <br>
+			
+		</div>
+		<div class="card footer" style="padding:10px; margin-bottom: 0px; text-align: center; align-content: center;">
+			 {% if user.is_authenticated %}
+			<a href="" class="btn btn-dark btn-sm  form-control" >Go...</a>
+			{% endif %}
+		</div>
+	</div>
+	</div>
+	<div class=" col-lg-3" style="padding: 10px">
+	<div class="card " style="padding: 0px;">
+		<div class="card header" style="padding:10px; margin-bottom: 0px;">
+			<h6 style="text-align: center">Receivable</h6 >
+		</div>
+		<div class="card body" style="padding:10px;  margin-bottom: 0px;">
+			This Week: <br>
+			This Month: <br>
+			This Year: <br>
+			Total Purchase: <br>
+			
+		</div>
+		<div class="card footer" style="padding:10px; margin-bottom: 0px; text-align: center; align-content: center;">
+			 {% if user.is_authenticated %}
+			<a href="" class="btn btn-dark btn-sm  form-control" >Go...</a>
+			{% endif %}
+		</div>
+	</div>
+	</div>
+        <div class="card card-chart">
+          <div class="card-header">
+            <h3>Latest Entries</h3>
+            {% include 'dashboard/entryshow.html'%}
+        </div>
+      </div>
+    </div>
+
+
+</div>
+</div>
+</div>
+
+
+{% endblock%}

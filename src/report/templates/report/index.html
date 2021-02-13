@@ -1,0 +1,35 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+<div class="card card-chart">
+        <div class="card-header">
+        	<div class="card text-center" style="padding: 10px;">
+            	<h3><i>{{ heading }}</i></h3>
+	
+        	<form action="" method="post">
+	            <div class="row">
+	            		{% csrf_token %}    		
+		            	<div class="col-md-2">
+		            		<label class="form-label">Start Date</label>
+		            	</div>     		
+		            	<div class="col-md-2">
+		            		<input class="form-control" type="date" name="s_date">
+		            	</div>   		
+		            	<div class="col-md-2">
+		            		<label class="form-label">End Date</label>
+		            	</div>			
+		            	<div class="col-md-2">
+		            		<input class="form-control" type="date" name="e_date">
+		            	</div>		
+		            	<div class="col-md-4">
+		            		<input class="form-control" type="submit" name="" value="Search">
+		            	</div>
+	            </div>
+        	</form>
+            	</div>
+			            {% include 'dashboard/entryshow.html'%}
+		</div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\bank">bank</a></li>
+  <li class="breadcrumb-item"><a href="\bank\view">show</a></li>
+</ol>
+<div class="card">
+	<div class="card-header">
+		<a href="\bank\{{bank.id}}\delete	" class="btn btn-danger btn-round btn-sm text-white pull-right"> Delete</a>     
+		<a href="\bank\{{bank.id}}\edit" class="btn btn-primary btn-round btn-sm text-white pull-right"> Edit</a>   
+		 <a href="\report\ledger\{{bank.ledger.id}}"  class="btn btn-primary btn-round btn-sm text-white pull-right">Entries</a>  
+        <h4 class="card-title">Bank Account Detail</h4>
+	</div>
+	<div class="card-body">
+
+		<table class="table table-striped">
+			<tr>
+				<th colspan="4" class="bg-secondary" style="color: white;" >Details</th>
+			</tr>
+			<tr>
+				<th colspan="2">Ledger</th>
+				<td>{{bank.ledger.id}}</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{bank.name}}</td>
+				<th>Branch</th>
+				<td>{{bank.branch}}</td>
+			</tr>
+			<tr>
+				<th>Account Title</th>
+				<td>{{bank.account_title}}</td>
+				<th>Account Number</th>
+				<td>{{bank.account_no}}</td>
+			</tr>
+			<tr>
+				<th>Initial Balance</th>
+				<td>{{bank.initial_balance}}</td>
+				<th>Initial Balance Type</th>
+				<td>{{bank.get_initial_balance_db_display}}</td>
+			</tr>
+			<tr>
+				<th>Balance</th>
+				<td>{{balance}}</td>
+				<th>Balance Type</th>
+				<td>{{balance_db}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+{% endblock %}

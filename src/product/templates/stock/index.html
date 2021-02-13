@@ -1,0 +1,65 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+<div class="container">
+			
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\product\">product</a></li>
+  <li class="breadcrumb-item"><a href="\product\expiry">stock</a></li>
+</ol>
+	<div class="card">
+		<div class="card-header">  
+	        <h4 class="card-title">Products Stock Ending</h4>
+	        <div class="dropdown">
+		       <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search Product.." title="Type in a name">
+	        </div>
+		</div>
+		<div class="card-body">
+			  {% for product in products %}
+	        <div class="card col-lg-3" style="margin: 10px; padding: 0px;">
+		        <div class="card-header " style="background-color:rgba(255, 99, 71, 0.6); text-align: center; padding-bottom: 5px;" >
+		        	<h6><i>{{product.name}}</i></h6>
+	        	</div>
+	        	<div class="card-body ">
+	        		<div class="row">
+	        			<div class="col-lg-12">
+			        		<label style="text-align: center; align-content: center;"><strong>Stock</strong></label>
+	        			</div>
+	        		</div>
+	        		<div class="row">
+		        		<label class="col-lg-6">Pack: <strong>{{product.stock_pack}}</strong></label>
+		        		<label class="col-lg-6">Tablet: <strong>{{product.stock_tablet}}</strong></label><br>
+	        		</div>
+	        		<div class="row">
+	        			<div class="col-lg-12" >
+		        		<label style="text-align: center; align-content: center;"><strong>Sale</strong></label>
+			        	</div>
+	        		</div>
+	        		<div class="row">
+		        		<label class="col-lg-6">Pack: <strong>{{product.sale_pack}}</strong></label>
+		        		<label class="col-lg-6">Tablet: <strong>{{product.sale_tablet}}</strong></label><br>
+	        		</div>
+	        		<div class="row">
+	        			<div class="col-lg-12">
+		        		<label style="text-align: center; align-content: center;"><strong>Purchase</strong></label>
+		        	</div>
+	        		</div>
+	        		<div class="row">
+		        		<label class="col-lg-6">Pack: <strong>{{product.purchase_pack}}</strong></label>
+		        		<label class="col-lg-6">Tablet: <strong>{{product.purchase_tablet}}</strong></label><br>
+	        		</div>
+	        	</div>
+	        	<div class="card-footer" style="text-align: center;">
+	        				<a href="\product\{{product.id}}"  class="btn btn-primary btn-sm btn-round text-white ">View</a>
+	        	</div>
+	        </div>
+
+
+	        {% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

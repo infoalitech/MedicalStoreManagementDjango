@@ -1,0 +1,134 @@
+
+
+
+		<div class="card">
+			<div class="card-header">
+				<div class="row">
+				<div class="col-sm-3"><strong>Ledger Id :</strong></div>
+				<div class="col-sm-3">{{entry.ledger.id}}</div>
+				<div class="col-sm-3"><strong>Entry Type :</strong></div>
+				<div class="col-sm-3">{{entry.entry_Type}}</div>
+				<div class="col-sm-3"><strong>Invoice Code:</strong> </div>
+				<div class="col-sm-3">{{entry.invoice_code}}</div>
+				<div class="col-sm-3"><strong>Entry Date:</strong> </div>
+				<div class="col-sm-3">{{entry.date}}</div>
+				<div class="col-sm-3"><strong>Total Transaction:</strong></div>
+				<div class="col-sm-3">{{entry.cr_total}}</div>
+				</div>
+
+		<table class="table table-striped">
+			<thead>
+				<th>Ledger</th>
+				{% if entry.entry_Type.name == 'sale' or entry.entry_Type.name == 'purchase'%}
+					<th>Pack</th>
+				{% endif %}
+				{% if entry.entry_Type.name == 'sale' %}
+					<th>Tablet</th>
+				{% endif %}
+				{% if entry.entry_Type.name == 'purchase' %}
+					<th>Quantity</th>
+				{% endif %}
+				{% if entry.entry_Type.name == 'purchase' %}
+					<th>Batch No</th>
+				{% endif %}
+				{% if entry.entry_Type.name == 'sale' or entry.entry_Type.name == 'purchase' %}
+					<th>Price</th>
+				{% endif %}
+				{% if entry.entry_Type.name == 'purchase' %}
+					<th>Tax</th>
+				{% endif %}
+				{% if entry.entry_Type.name == 'sale' %}
+					<th>Discount Allowed</th>
+				{% endif %}
+				{% if entry.entry_Type.name == 'purchase' %}
+					<th>Discount Received</th>
+				{% endif %}
+					<th>Total Amount</th>
+					<th>Db/Cr</th>
+			</thead>
+
+			{% for item in entry.entry_item_set.all %}
+			<tr>
+				<td>
+					{% if item.ledger.Ledger_Type.name == 'common' %}
+						{{item.ledger.common.name}}
+					{% endif %}
+					{% if item.ledger.Ledger_Type.name == 'product' %}
+						{{item.ledger.product.name}}
+					{% endif %}
+					{% if item.ledger.Ledger_Type.name == 'customer' %}
+						{{item.ledger.customer}}
+					{% endif %}
+					{% if item.ledger.Ledger_Type.name == 'supplier' %}
+						{{item.ledger.supplier.name}}
+					{% endif %}
+					{% if item.ledger.Ledger_Type.name == 'bank' %}
+						{{item.ledger.bank.name}}
+					{% endif %}
+					{% if item.ledger.Ledger_Type.name == 'employee' %}
+						{{item.ledger.employee.name}}
+					{% endif %}
+					{% if item.ledger.Ledger_Type.name == 'expances' %}
+						{{item.ledger.expance.name}}
+					{% endif %}
+				</td>
+				{% if entry.entry_Type.name == 'sale' or entry.entry_Type.name == 'purchase'%}
+					<td>
+						{% if item.pack > 0 %}
+							{{item.pack}}
+						{% endif %}
+					</td>
+				{% endif %}
+				{% if entry.entry_Type.name == 'sale' %}
+					<td>
+					{% if item.pack > 0 %}
+						{{item.tablet}}
+					{% endif %}
+					</td>
+				{% endif %}
+				{% if entry.entry_Type.name == 'purchase' %}
+					<td>
+					{% if item.quantity > 0 %}
+						{{item.quantity}}
+					{% endif %}
+					</td>
+				{% endif %}
+				{% if entry.entry_Type.name == 'purchase' %}
+					<td>
+					{% if item.batch_no > 0 %}
+						{{item.batch_no}}
+					{% endif %}
+					</td>
+				{% endif %}
+				{% if entry.entry_Type.name == 'sale' or entry.entry_Type.name == 'purchase' %}
+					<td>
+					{% if item.price > 0 %}
+						{{item.price}}
+					{% endif %}
+					</td>
+				{% endif %}
+				{% if entry.entry_Type.name == 'purchase' %}
+					<td>
+					{% if item.tax > 0 %}
+						{{item.tax}}
+					{% endif %}
+					</td>
+				{% endif %}
+				{% if entry.entry_Type.name == 'sale' or entry.entry_Type.name == 'purchase' %}
+					<td>
+						{% if item.discount > 0 %}
+							{{item.discount}}
+						{% endif %}
+					</td>
+				{% endif %}
+				<td>
+					{% if item.total_amount > 0 %}
+						{{item.total_amount}}
+					{% endif %}
+				</td>
+				<td>{{item.get_dc_display}}</td>
+			</tr>	
+				{% endfor %}
+		</table>
+					</div>
+		</div>

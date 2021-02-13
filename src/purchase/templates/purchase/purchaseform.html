@@ -1,0 +1,130 @@
+		<div class="card card-chart" style="padding: 20px;">   
+		    <h4 class="card-title">Purchase</h4>   
+			<div class="card-body">
+              <div class="row">
+                <input type="number" name="qty" id="Nqty" class="form-control col-lg-2 " min="0" placeholder="Quantity" onchange="Ncalculate()">
+                <input list="browsers" name="browser" id="Nname" class="form-control col-lg-2" onchange="getproducttype()" placeholder="Select Product">
+                <datalist id="browsers">
+                 {% for product in products%}
+                    <option value="{{product.id}}">
+                     {{product.name}} &nbsp; {{product.code}} &nbsp;  &nbsp; {{product.mg}} 
+                    </option>
+                  {% endfor %}
+                </datalist>
+                <input type="number"  min="0" id="Npack" class="form-control col-lg-2  " placeholder="Packet" onchange="Ncalculate()">
+                <input type="text" id="Nbatch" class="form-control col-lg-2 " placeholder="Batch" >
+                <input type="number" id="Nprice" class="form-control col-lg-2 " placeholder="Price" onchange="Ncalculate()">
+                <input type="hidden" id="Npricetotal" >
+                <input type="number" id="Ndiscount" class="form-control col-lg-2 " placeholder="Discount%" onchange="Ncalculate()">
+                <input type="hidden" id="Ndiscountamount"  >
+                <input type="number" id="NSTax" class="form-control col-lg-2 " placeholder="S-TAX" onchange="Ncalculate()">
+                <input type="hidden" id="Nstaxamount">
+                <input type="number" id="Ntotal" class="form-control col-lg-2 " placeholder="Total" onchange="Ncalculate()">
+                <input type="date" id="Nexpiry" class="form-control col-lg-2 " placeholder="Expiry">
+                <input type="number" id="NS_Price" class="form-control col-lg-2 " placeholder="Sale Price">
+                <input type="button"  class="form-control col-lg-3  " Value="Add" style="" id="add-btn" onclick="addproduct()">
+              </div>
+
+
+
+           <form method="post" action="purchasestore/" class="from-horizantal" style="margin-top:  10px;">
+            {% csrf_token %}
+              <div class="card card-chart " style="padding: 30px;">
+              <h6>Envice</h6>
+                
+                <div class="row">
+                <div class="input-group no-border form-control-lg col-lg-6">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Select Supplier</div>
+                  </div>
+                  <input list="suppliers" placeholder="Select Supplier" class="form-control " name="supplier" id="supplier" required onchange="supplierselect()">
+                  <datalist id="suppliers">
+                   {% for supplier in suppliers%}
+                      <option value="{{supplier.id}}">
+                       {{supplier.name}} &nbsp; {{supplier.code}} &nbsp;  &nbsp; {{supplier.mg}} 
+                      </option>
+                    {% endfor %}
+                  </datalist>
+                </div>
+
+                <div class="input-group no-border form-control-lg col-lg-6">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Select Date</div>
+                  </div>
+                  <input type="date" name="date_of_purchase" class="form-control" required="" value="">
+                </div>
+                
+                </div>
+                
+              <table class="table table-bordered table-responsive" id="envice" style="background-color: white">
+                  <thead>
+                    <th style="width: 180px;">Product</th>
+                    <th style="width: 200px;">Qty</th>
+                    <th style="width: 180px;">Packets</th>
+                    <th style="width: 180px;">Batch</th>
+                    <th style="width: 200px;">Price</th>
+                    <th style="width: 200px;">Dis%</th>
+                    <th style="width: 200px;">S-Tax</th>
+                    <th style="width: 200px;">Total</th>
+                    <th style="width: 250px;">Expiry</th>
+                    <th style="width: 200px;">Sale Price</th>
+                  </thead>
+                  <tfoot>
+                  <tr>
+                    <th>Total</th>
+                    <th><input type="total" name="qtty" id="qtty" class="form-control" readonly="" placeholder="Quantity" ></th>
+                    <th colspan="2"> </th >
+                    <th><input type="total" name="prri" id="prri" class="form-control" readonly="" placeholder="Gross"></th>
+                    <th><input type="total" name="diis" id="diis" class="form-control" readonly="" placeholder="Disc"></th >
+                    <th><input type="total" name="sttax" id="sttax" class="form-control" readonly="" placeholder="S-Tax"></th>
+                    <th><input type="total" name="tottal" id="total" class="form-control" readonly="" placeholder="Total"></th>
+                    <th colspan="2"></th>
+                  </tr>
+                  <tr>
+                      <td colspan="">Prev Balance</td>
+                      <td colspan=""><input type="text" name="pre_balance" class="form-control" id="prev_balance" readonly="" placeholder="Prev Balance"></td>
+                      <td colspan="">Net Payable</td>
+                      <td colspan=""><input type="text" name="netpayable" id="netpayable" class="form-control" readonly="" placeholder="Net Payable"></td>
+                      <td colspan="" >Paid</td>
+                      <td colspan="2">
+                       <input type="text" name="paid" class="form-control" placeholder="Paid" id="paid"  onchange="calculatenet()">
+                      </td>
+                      <td colspan="" >Due</td>
+                      <td colspan="2">
+                       <input type="text" name="due" class="form-control" placeholder="Due Payment" id="duepayment">
+                      </td>
+                    </tr>
+                  <tr>
+                      <td colspan="2">Payment Type</td>
+                      <td colspan="3">
+                        <select  class="form-control" onchange="paymenttypeselect()" id="paymenttypeid">
+                          <option value="0">Cash</option>
+                          <option value="1">Check</option>
+                        </select>
+                      </td>
+                      <td colspan="2">Bank</td>
+                      <td colspan="3">
+                        <select  class="form-control" id="bankselectid">
+                          <option>Select Bank</option>
+                            {% for bank in banks%}
+                              <option value="{{supplier.id}}">
+                               {{bank.name}} &nbsp; {{bank.account_no}}
+                              </option>
+                            {% endfor %}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="10" style="align-content: center; text-align: center;">
+                        <input type="submit" name="" value="Save" class="btn btn-primary form-control md-4">
+                      </td>
+                  </tr>
+                  </tfoot>
+              </table>
+            </div>
+           </form>
+
+
+
+			</div>
+		</div>

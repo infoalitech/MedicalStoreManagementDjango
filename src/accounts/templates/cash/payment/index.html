@@ -1,0 +1,73 @@
+
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+<div class="row">
+	<div class="container">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\account\cashpayment">Cash Payment</a></li>
+</ol>
+ <div class="card card-chart">
+          <div class="card-header">
+            <h4 class="card-title">Cash Payments</h4>
+          </div>
+          <div class="card-body">
+           <form method="post" action="cashpayment\store\" class="from-horizantal"  style="padding: 20px;">
+            {% csrf_token %}
+              <div class="card col-lg-12" style="padding: 20px;" >
+              <h6>Envice</h6>  
+              <table class="table table-bordered" id="envice" style="background-color: white">
+                    <thead>
+                      <th >Customer</th>
+                      <th >Amount</th>
+                    </thead>
+                    <tr>
+                        <td >
+                          <select class="form-control" name="ledger" >
+                            <option value="" selected="" disabled="" >Select</option>
+                            {% for ledger in suppliers %}
+                              <option value="{{ledger.id}}">{{ledger.supplier}}</option>
+                            {% endfor %}
+                            {% for ledger in customers %}
+                              <option value="{{ledger.id}}">{{ledger.customer}}</option>
+                            {% endfor %} 
+                            {% for ledger in employees %}
+                              <option value="{{ledger.id}}">{{ledger.employee}}</option>
+                            {% endfor %}
+                          </select>
+
+                        </td>
+                        <td>
+                          <input class="form-control" type="text" name="amount"  id="receivedd" required="" >
+                        </td>
+                    </tr>
+                    <tfoot>
+                      <tr>
+                        <td colspan="9" style="align-content: center; text-align: center;">
+                          <input type="submit" name="" value="Save" class="btn btn-primary form-control md-4">
+                        </td>
+                      </tr>
+                    </tfoot>
+              </table>
+            </div>
+           </form>
+	</div>
+</div>
+
+
+
+
+<div class="card card-chart">
+  <div class="card-header">
+  	<h4>
+        Cash Payments
+	</h4>
+       {% include 'dashboard/entryshow.html'%}
+  </div>
+	</div>
+</div>
+</div>
+{% endblock %}

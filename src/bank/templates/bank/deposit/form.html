@@ -1,0 +1,41 @@
+
+<div class="card card-chart" style="padding: 20px;">   
+
+<h4 class="card-title">Bank Deposit</h4>   
+<div class="card-body ">
+<form class="from-horizantal" action="store/" method="post" style="margin-top:  30px;">
+  {% csrf_token %}
+  <h6>Invoice</h6>
+  <table class="table table-bordered "  id="envice" style="background-color: white">
+      <tr>
+        <th><strong>Bank Account</strong></th>
+        <th><strong>Amount</strong></th>
+        <th><strong>Dedit/Credit</strong></th>
+      </tr>
+      <tfoot>
+        <tr>
+          <td>
+            <select class="form-control" name="bank">
+              {% for bank in banks%}
+                <option value="{{bank.id}}">{{bank.name}}</option>
+              {% endfor %}
+            </select>
+          </td>
+          <td >
+            <input class="form-control" type="number" name="amount">
+          </td>
+          <td >
+            <select class="form-control" >
+              <option value="D">Debit</option>
+              <option value="C">Credit</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="7"><input type="submit" value="Save" class="btn btn-primary form-control"></td>
+        </tr>
+      </tfoot>
+  </table>
+</form>
+  </div>
+</div>

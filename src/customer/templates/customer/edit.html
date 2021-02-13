@@ -1,0 +1,32 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+<div class="container">
+	
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\customer">Customer</a></li>
+  <li class="breadcrumb-item"><a href="\customer\edit">Edit</a></li>
+</ol>	
+<div class="card">
+	<div class="card-header">
+
+	<h6 class="heading-small text-muted mb-4">Edit Customer</h6>
+	</div>
+	<div class="card-body">
+	<form action="{% url 'customer:update' customer.id %}" method="post">
+		<input type="hidden" name="id" value="{{customer.id}}">
+	{% csrf_token %}
+	{% include 'customer/form.html' %}
+	<div class="form-group " >
+		<input type="submit" class="btn btn-primary form-control" value="Save">
+	</div>
+	</form>
+	</div>
+	<div class="card-footer">
+		
+	</div>
+</div>
+</div>
+{% endblock %}

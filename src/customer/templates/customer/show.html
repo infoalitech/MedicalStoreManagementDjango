@@ -1,0 +1,70 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\customer">Customer</a></li>
+  <li class="breadcrumb-item"><a href="\customer\view">show</a></li>
+</ol>
+<div class="card">
+	<div class="card-header">
+		<a href="\customer\{{customer.id}}\delete	" class="btn btn-danger  btn-sm btn-round text-white pull-right"> Delete</a>     
+		<a href="\customer\{{customer.id}}\edit" class="btn btn-primary  btn-sm btn-round text-white pull-right"> Edit</a>     
+		 <a href="\report\ledger\{{customer.ledger.id}}"  class="btn btn-primary  btn-sm btn-round text-white pull-right">Entries</a>
+        <h4 class="card-title">Customer Detail</h4>
+        <div class="dropdown">
+	      
+        </div>
+	</div>
+	<div class="card-body">
+
+		<table class="table table-striped">
+			<tr>
+				<th colspan="4" class="bg-secondary" style="color: white;" >Details</th>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{customer.name}}</td>
+				<th>Ledger</th>
+				<td>{{customer.ledger.id}}</td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td>{{customer.phone}}</td>
+				<th>Cell</th>
+				<td>{{customer.cell}}</td>
+			</tr>
+			<tr>
+				<th>email</th>
+				<td>{{customer.email}}</td>
+				<th>Address</th>
+				<td>{{customer.address}}</td>
+			</tr>
+			<tr>
+				<th>Initial Balance</th>
+				<td>{{customer.initial_balance}}</td>
+				<th>Initial Balance Type</th>
+				<td>{{customer.get_initial_balance_db_display}}</td>
+			</tr>
+			<tr>
+				<th>Balance</th>
+				<td>{{balance}}</td>
+				<th>Balance Type</th>
+				<td>{{balance_db}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+{% endblock %}

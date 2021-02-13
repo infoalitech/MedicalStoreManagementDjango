@@ -1,0 +1,138 @@
+{% load static %}
+
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="\">Mairaj Medical Store</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+{% if user.is_authenticated %}
+<!-- User Links -->
+
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons shopping_cart-simple"></i>Sale
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\sale\">Sale</a>
+            <!-- <a class="dropdown-item" href="\salereturn\">Sale Return</a> -->
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons shopping_box"></i>Purchase
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\purchase\">Purchase</a>
+            <!-- <a class="dropdown-item" href="\purchasereturn">Purchase Return</a> -->
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons shopping_box"></i>Bank
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\bank\deposit\">Bank Deposit</a>
+            <a class="dropdown-item" href="\bank\withdraw\">Bank Withdraw</a>
+          </div>
+        </li>
+
+        </li> 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons shopping_credit-card"></i>Cash
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\account\cashreceive">Receive</a>
+            <a class="dropdown-item" href="\account\cashpayment">Payment</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons shopping_credit-card"></i>Common
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\productused\">Product Used</a>
+            <a class="dropdown-item" href="\expances\pay\">New Expenses</a>
+            <a class="dropdown-item" href="\account\salary">Salary</a>
+            <a class="dropdown-item" href="\account\cashpayment">Cash Withdraw</a>
+            <a class="dropdown-item" href="\account\cashpayment">Cash Addition</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons education_paper"></i>Report
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/report">All Entries</a>
+            <a class="dropdown-item" href="/report/sale">Sale</a>
+            <a class="dropdown-item" href="/report/salereturn">Sale Return</a>
+            <a class="dropdown-item" href="/report/purchase">Purchase</a>
+            <a class="dropdown-item" href="/report/purchasereturn">Purchase Return</a>
+            <a class="dropdown-item" href="/report/cashpayment">Cash Payment</a>
+            <a class="dropdown-item" href="/report/cashreceive">Cash Receive</a>
+            <a class="dropdown-item" href="/report/productused">Product Used</a>
+            <a class="dropdown-item" href="/report/bankdeposit">Bank Deposit</a>
+            <a class="dropdown-item" href="/report/bankwithdraw">Bank Withdraw</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons education_agenda-bookmark"></i>Ledgers
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\product\">Product</a>
+            <a class="dropdown-item" href="\customer\">Customer</a>
+            <a class="dropdown-item" href="\supplier\">Supplier</a>
+            <a class="dropdown-item" href="\bank\">Bank</a>
+            <a class="dropdown-item" href="\expances\">Expenses</a>
+            <a class="dropdown-item" href="\employee\">Employee</a>
+            <a class="dropdown-item" href="\account\common\">Common</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons ui-1_bell-53"></i>Alerts
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\product\expiry">Expiry</a>
+            <a class="dropdown-item" href="\product\stock">Stock</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" class="dropdownn" id="navbardrop" data-toggle="dropdown">
+            <i class="now-ui-icons users_circle-08"></i>{{user}}
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="\setting\">Setting</a>
+            <a class="dropdown-item" href="\logout\">Logout</a>
+          </div>
+        </li>
+{% else %}
+<!-- Guest Links -->
+        <li class="nav-item @if ($activePage == 'register') active @endif">
+          <a href="\register\" class="nav-link">
+            <i class="now-ui-icons tech_mobile"></i> Register
+          </a>
+        </li>
+        <li class="nav-item @if ($activePage == 'login') active @endif ">
+          <a href="\login\" class="nav-link">
+            <i class="now-ui-icons users_circle-08"></i>Login
+          </a>
+        </li>
+
+
+{% endif %}
+
+      </ul>
+    </div>
+  </div>
+</nav>

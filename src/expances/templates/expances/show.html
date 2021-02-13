@@ -1,0 +1,58 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\expances">Expense</a></li>
+  <li class="breadcrumb-item"><a href="\expances\view">Detail</a></li>
+</ol>
+<div class="card">
+	<div class="card-header">
+		<a href="\expances\{{expance.id}}\delete	" class="btn btn-danger btn-sm btn-round text-white pull-right"> Delete</a>     
+		<a href="\expances\{{expance.id}}\edit" class="btn btn-primary btn-sm btn-round text-white pull-right"> Edit</a>  
+		<a href="\report\ledger\{{expance.ledger.id}}"  class="btn btn-primary btn-sm btn-round text-white pull-right">Entries</a>   
+        <h4 class="card-title">Expense Detail</h4>
+        <div class="dropdown">
+	      
+        </div>
+	</div>
+	<div class="card-body">
+
+		<table class="table table-striped">
+			<tr>
+				<th colspan="4" class="bg-secondary" style="color: white;" >Details</th>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{expance.name}}</td>
+				<th>Ledger</th>
+				<td>{{expance.ledger.id}}</td>
+			</tr>
+			<tr>
+				<th>Initial Balance</th>
+				<td>{{expance.initial_balance}}</td>
+				<th>Initial Balance Type</th>
+				<td>{{expance.get_initial_balance_db_display}}</td>
+			</tr>
+			<tr>
+				<th>Balance</th>
+				<td>{{balance}}</td>
+				<th>Balance Type</th>
+				<td>{{balance_db}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+{% endblock %}

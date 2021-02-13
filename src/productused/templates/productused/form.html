@@ -1,0 +1,38 @@
+<div class="card card-chart">
+         <div class="card-header">
+            <h4 class="card-title">Products Used/Destroyed</h4>
+        </div>
+        
+<div class="card-body ">
+<form class="from-horizantal" action="store/" method="post">
+  {% csrf_token %}
+  <div class="card card-chart " style="padding: 20px;">
+  <h6>Invoice</h6>
+  <table class="table">
+    <td>
+      <input list="saleselectproduct" id="Nname" name="product" class="form-control" onchange="getproducttype()" placeholder="Select Product">
+        <datalist id="saleselectproduct">
+          {% for product in products%}
+             <option value="{{product.id}}">
+               {{product.name}} &nbsp; {{product.code}} &nbsp;  &nbsp; {{product.mg}} 
+              </option>
+          {% endfor%}
+        </datalist>
+    </td>
+    <td>
+      <input type="number" name="amount" id="Nprice"  min="0" class="form-control " placeholder="Price" readonly="">
+    </td>
+    <td>
+      <input type="number" name="packet"  min="0" class="form-control " placeholder="Packet">
+    </td>
+    <td>
+      <input type="number" name="tablet" min="0" class="form-control " placeholder="Tablets" onchange="tabchange()">
+    </td>
+    <tr>
+      <td colspan="7"><input type="submit" name="" id="save_btn" value="Save" class="btn btn-primary form-control"></td>
+    </tr>
+  </table>
+  </div>
+</form>
+	</div>
+</div>

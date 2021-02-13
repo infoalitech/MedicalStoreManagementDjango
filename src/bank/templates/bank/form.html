@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-name">
+    Name
+  </label>
+  <input type="text" name="name" id="input-name" class="form-control" placeholder="Name" value="{% if bank %} {{bank.name}} {% endif %}" required autofocus>
+  <label id="name-error"></label>
+  </div>
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-branch">Branch</label>
+  <input type="branch" name="branch" id="input-branch" class="form-control" placeholder="branch" value="{% if bank %} {{bank.branch}} {% endif %}" required>
+  <label id="branch-error"></label>
+  </div>
+
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-account_title">Account Title</label>
+  <input type="text" name="account_title" id="input-account_title" class="form-control" placeholder="account_title"  value="{% if bank %} {{bank.account_title}} {% endif %}" required>
+  <label id="account_title-error"></label>
+  </div>
+  <div class="col-lg-6 form-group ">
+    <label class="form-control-label" for="input-account_no">Account No</label>
+    <input type="text" name="account_no" id="input-account_no" class="form-control" placeholder="account_no"  value="{% if bank %} {{bank.account_no}} {% endif %}" >
+  <label id="account_no-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-initial_balances">Initial Balance</label>
+  <input type="text" name="initial_balance" id="input-initial_balances" class="form-control" placeholder="Stock Packs"  value="{% if bank %} {{bank.initial_balance}} {% endif %}">
+  <label id="initial_balances-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-initial_balance_db">initial_balance_db</label>
+  <select class="form-control" name="initial_balance_db" >
+    <option value="D" value="{% if bank.initial_balance_db == 'D' %}{% endif %}">Debit</option>
+    <option value="C" value="{% if bank.initial_balance_db == 'C' %}{% endif %}">Credit</option>
+  </select>
+  <label id="tablet-error"></label>
+  </div>
+</div>

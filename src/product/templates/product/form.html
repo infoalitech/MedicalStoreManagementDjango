@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-name">Name</label>
+  <input type="text" name="name" id="input-name" class="form-control" placeholder="Name" value="{% if product %} {{product.name}} {% endif %}" required autofocus>
+  <label id="name-error"></label>
+  </div>
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-price">Price</label>
+  <input type="price" name="price" id="input-price" class="form-control" placeholder="Price" value="{% if product %} {{product.price}} {% endif %}" required>
+  <label id="price-error"></label>
+  </div>
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-type">Type</label>
+  <select class=" form-control" name="type" id="input-type" onchange="tablet_type()">
+    <option disabled="">Type </option>
+    <option value="T">Tablet </option>
+    <option value="S">Syrup </option>
+    <option value="I">Injection </option>
+    <option value="C">Common</option>
+  </select>
+  <label id="type-error"></label>
+  </div>
+
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-type">Supplier</label>
+  <select class=" form-control" name="supplier" id="input-type" onchange="tablet_type()">
+    <option disabled="">Select Supplier </option>
+  {% for supplier in suppliers %}
+    <option value="{{supplier.id}}" {% if product.supplier.id == supplier.id %} selected= {% endif %}
+    >{{supplier.name}}</option>
+  {% endfor %}
+  </select>
+  <label id="type-error"></label>
+  </div>
+
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-code">Code</label>
+  <input type="code" name="code" id="input-code" class="form-control" placeholder="Code"  value="{% if product %} {{product.code}} {% endif %}" required>
+  <label id="code-error"></label>
+  </div>
+  <div class="col-lg-6 form-group ">
+    <label class="form-control-label" for="input-mg">Mg</label>
+    <input type="mg" name="mg" id="input-mg" class="form-control" placeholder="Mg"  value="{% if product %} {{product.mg}} {% endif %}" >
+  <label id="mg-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-tablets">Tablets</label>
+  <input type="number" name="tablets" id="input-tablets" class="form-control" placeholder="Tablets"  value="{% if product %} {{product.tablets}} {% endif %}" >
+  <label id="tablet-error"></label>
+  </div>
+  <div class="col-lg-6 form-group col-lg-12" >
+  <h6 class="form-control-label">Stock</h6> 
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-s_packs">Packs</label>
+  <input type="number" name="s_pack" id="input-s_packs" class="form-control" placeholder="Stock Packs"  value="{% if product %} {{product.s_pack}} {% endif %}">
+  <label id="s_packs-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-s_tablets">Tablets</label>
+  <input type="number" name="s_tab" id="input-s_tablets" class="form-control" placeholder="Stock Tablets"  value="{% if product %} {{product.s_tablet}} {% endif %}">
+  <label id="s_tablets-error"></label>
+  </div>
+</div>

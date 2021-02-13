@@ -1,0 +1,80 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+<div class="container">
+			
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\product\">product</a></li>
+</ol>
+<div class="card">
+	<div class="card-header">
+		<a href="\product\create\" class="btn btn-sm btn-primary btn-round text-white pull-right"> Stock</a>     
+		<a href="\product\create\" class="btn btn-sm btn-primary btn-round text-white pull-right"> Expiry</a>     
+		<a href="\product\create\" class="btn btn-sm btn-primary btn-round text-white pull-right"> Add Product</a>     
+        <h4 class="card-title">Products</h4>
+        <div class="dropdown">
+	       <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search Product.." title="Type in a name">
+        </div>
+	</div>
+	<div class="card-body">
+	      <div id="producttable" class="row">
+	        {% for product in products %}
+	        <div class="card col-lg-3" style="margin: 10px; padding: 0px;">
+		        <div class="card-header " style="background-color:rgba(255, 99, 71, 0.6); text-align: center; padding-bottom: 5px;" >
+		        	<h6><i>{{product.name}}</i></h6>
+	        	</div>
+	        	<div class="card-body">
+	        		<label>Ledger ID: <strong>{{product.ledger.id}}</strong></label><br>
+	        		<label>Milligram: <strong>{{product.mg}}</strong></label><br>
+	        		<label>Code: <strong>{{product.code}}</strong></label><br>
+	        		<label>Price: <strong>{{product.price}}</strong></label>
+	        	</div>
+	        	<div class="card-footer">
+	        		<div class="row">
+	        			<div class="col-lg-6">
+	        				{% if product.active == '1'%}
+							<a href="\product\{{product.id}}\active" class="btn btn-primary btn-sm btn-round text-white">
+							{% else %}
+							<a href="\product\{{product.id}}\inactive" class="btn btn-primary btn-sm btn-round text-white pull-right">
+							{% endif %}
+							{{product.get_active_display}}	</a>
+	        			</div>
+	        			<div class="col-lg-6">
+	        				<a href="\product\{{product.id}}"  class="btn btn-primary btn-sm btn-round text-white ">View</a>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+
+
+	        {% endfor %}
+	       
+	      </div>
+	</div>
+</div>
+
+
+</div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("producttable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+{% endblock %}

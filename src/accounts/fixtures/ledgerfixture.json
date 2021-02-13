@@ -1,0 +1,173 @@
+[
+  {
+    "model": "accounts.Ledger",
+    "pk": 1,
+    "fields": {
+      "group": 1,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 1,
+    "fields": {
+      "name": "cash",
+      "ledger": 1
+    }
+  },
+  
+
+  {
+    "model": "accounts.Ledger",
+    "pk": 2,
+    "fields": {
+      "group": 1,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 2,
+    "fields": {
+      "name": "check",
+      "ledger": 2
+    }
+  },
+
+
+  {
+    "model": "accounts.Ledger",
+    "pk": 3,
+    "fields": {
+      "group": 4,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 3,
+    "fields": {
+      "name": "Discount allowed",
+      "ledger": 3
+    }
+  },
+
+
+  {
+    "model": "accounts.Ledger",
+    "pk": 4,
+    "fields": {
+      "group": 3,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 4,
+    "fields": {
+      "name": "Discount Received",
+      "ledger": 4
+    }
+  },
+
+
+  {
+    "model": "accounts.Ledger",
+    "pk": 5,
+    "fields": {
+      "group": 4,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 5,
+    "fields": {
+      "name": "Commission allowed",
+      "ledger": 5
+    }
+  },
+
+  {
+    "model": "accounts.Ledger",
+    "pk": 6,
+    "fields": {
+      "group": 3,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 6,
+    "fields": {
+      "name": "Commission Received",
+      "ledger": 6
+    }
+  },
+
+  {
+    "model": "accounts.Ledger",
+    "pk": 7,
+    "fields": {
+      "group": 4,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 7,
+    "fields": {
+      "name": "Product Used",
+      "ledger": 7
+    }
+  },
+
+  {
+    "model": "accounts.Ledger",
+    "pk": 8,
+    "fields": {
+      "group": 4,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 8,
+    "fields": {
+      "name": "Loss",
+      "ledger": 8
+    }
+  },
+  {
+    "model": "accounts.Ledger",
+    "pk": 9,
+    "fields": {
+      "group": 4,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 9,
+    "fields": {
+      "name": "Loss",
+      "ledger": 9
+    }
+  },
+  {
+    "model": "accounts.Ledger",
+    "pk": 10,
+    "fields": {
+      "group": 4,
+      "Ledger_Type": 1
+    }
+  },
+  {
+    "model": "accounts.Common",
+    "pk": 10,
+    "fields": {
+      "name": "Tax",
+      "ledger": 10
+    }
+  }
+]

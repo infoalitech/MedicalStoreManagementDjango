@@ -1,0 +1,53 @@
+
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+<div class="row">
+	<div class="container">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\purchase">Purchase</a></li>
+</ol>
+  {% include 'purchase/purchaseform.html'%}
+        <div class="card card-chart">
+          <div class="card-header">
+            <h4>
+            Purchases
+          </h4>
+            <div class="dropdown">
+            <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search Invoice.." title="Type in a name">
+            </div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("purchasetable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+          </div>
+            {% include 'dashboard/entryshow.html'%}
+            {% include 'purchase/js.html'%}
+        </div>
+      </div>
+    </div>
+
+    
+
+
+{% endblock %}

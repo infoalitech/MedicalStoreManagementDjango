@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-name">Name</label>
+  <input type="text" name="name" id="input-name" class="form-control" placeholder="Name" value="{% if expance %} {{expance.name}} {% endif %}" required autofocus>
+  <label id="name-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-initial_balances">Initial Balance</label>
+  <input type="number" name="initial_balance" id="input-initial_balances" class="form-control" placeholder="Stock Packs"  value="{% if expance %} {{expance.initial_balance}} {% endif %}">
+  <label id="initial_balances-error"></label>
+  </div>
+
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-initial_balance_db">initial_balance_db</label>
+  <select class="form-control" name="initial_balance_db" >
+    <option value="D" value="{% if expance.initial_balance_db == 'D' %}{% endif %}">Debit</option>
+    <option value="C" value="{% if expance.initial_balance_db == 'C' %}{% endif %}">Credit</option>
+  </select>
+  <label id="tablet-error"></label>
+  </div>
+</div>

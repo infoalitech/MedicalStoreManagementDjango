@@ -1,0 +1,91 @@
+
+
+
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-sm-3"><strong>Ledger Id :</strong></div>
+			<div class="col-sm-3">{{ledger.id}}</div>
+			<div class="col-sm-3"><strong>Ledger Name :</strong></div>
+			<div class="col-sm-3">
+				{% if ledger.Ledger_Type.name == 'common' %}
+					{{ledger.common.name}}
+				{% endif %}
+				{% if ledger.Ledger_Type.name == 'product' %}
+					{{ledger.product.name}}
+				{% endif %}
+				{% if ledger.Ledger_Type.name == 'customer' %}
+					{{ledger.customer}}
+				{% endif %}
+				{% if ledger.Ledger_Type.name == 'supplier' %}
+					{{ledger.supplier.name}}
+				{% endif %}
+				{% if ledger.Ledger_Type.name == 'bank' %}
+					{{ledger.bank.name}}
+				{% endif %}
+				{% if ledger.Ledger_Type.name == 'employee' %}
+					{{ledger.employee.name}}
+				{% endif %}
+				{% if ledger.Ledger_Type.name == 'expances' %}
+					{{ledger.expance.name}}
+				{% endif %}
+			</div>
+			<div class="col-sm-3"><strong>Ledger Type :</strong></div>
+			<div class="col-sm-3">{{ledger.Ledger_Type.name}}</div>
+			<div class="col-sm-3"><strong>Balance :</strong></div>
+			<div class="col-sm-3">{{balance}}</div>
+			<div class="col-sm-3"><strong>Balance Type :</strong></div>
+			<div class="col-sm-3">{{balance_db}}</div>
+		</div>
+			<form action="" method="post">
+		<div class="row">
+	            		{% csrf_token %}    		
+		            	<div class="col-md-2">
+		            		<label class="form-label">Start Date</label>
+		            	</div>     		
+		            	<div class="col-md-2">
+		            		<input class="form-control" type="date" name="s_date">
+		            	</div>   		
+		            	<div class="col-md-2">
+		            		<label class="form-label">End Date</label>
+		            	</div>			
+		            	<div class="col-md-2">
+		            		<input class="form-control" type="date" name="e_date">
+		            	</div>		
+		            	<div class="col-md-4">
+		            		<input class="form-control" type="submit" name="" value="Search">
+		            	</div>
+		</div>
+        	</form>
+
+		<table class="table table-striped">
+			<thead>
+					<th>Invoice Code</th>
+					<th>Invoice Type</th>
+					<th>Date</th>
+					<th>Total Amount</th>
+					<th>Db/Cr</th>
+			</thead>
+
+			{% for item in entry_items %}
+			<tr>
+				<td>
+					<a href="/detail/{{item.entry.id}}">{{item.entry.invoice_code}}</a>
+				</td>
+				<td>
+					{{item.entry.entry_Type.name}}
+				</td>
+				<td>
+					{{item.entry.date}}
+				</td>
+				<td>
+					{{item.total_amount}}
+				</td>
+				<td>
+					{{item.get_dc_display}}
+				</td>				
+			</tr>	
+				{% endfor %}
+		</table>
+	</div>
+</div>

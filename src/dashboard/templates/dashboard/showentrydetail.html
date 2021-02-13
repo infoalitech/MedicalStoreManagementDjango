@@ -1,0 +1,21 @@
+
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+{% load static %}
+
+<div class="row">
+	<div class="container">
+		<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="\">Home</a></li>
+		</ol>
+		{% include 'dashboard/entrydetail.html'%}
+	</div>
+</div>
+
+
+
+
+{% endblock%}

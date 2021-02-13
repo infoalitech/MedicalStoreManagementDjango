@@ -1,0 +1,30 @@
+
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+<div class="row">
+<div class="container">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\">Bank</a></li>
+  <li class="breadcrumb-item"><a href="\">Deposit</a></li>
+</ol>
+ 
+            {% include 'bank/deposit/form.html'%}
+        <div class="card card-chart">
+          <div class="card-header">
+            <h3>Bank Deposits</h3>
+            {% include 'dashboard/entryshow.html'%}
+          </div>
+      </div>
+    </div>
+
+
+</div>
+</div>
+
+
+
+
+{% endblock %}

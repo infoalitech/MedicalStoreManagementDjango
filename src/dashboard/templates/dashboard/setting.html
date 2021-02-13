@@ -1,0 +1,50 @@
+
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+{% load static %}
+		
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\customer">setting</a></li>
+</ol>
+<div class="content">
+    <div class="container" style="align-content: center; text-align: center;">
+                <div class="card-body">
+            <div class="toolbar">
+              <!--        Here you can write extra buttons/actions for the toolbar              -->
+            </div>
+
+            <div class="row">
+            <div class="col-md-6">
+            <h5>Stock Alert</h5>
+            Alert Me When only <em>{{minimum.value}}</em> is remaining.<br>
+            <br><br>
+            <form class="" action="/setting/saveminimum" method="post">
+               {% csrf_token %}
+              <h6>Change</h6>
+              <input type="number" class="form-control" name="minimumstock" value="{{minimum.value}}">
+              <input type="submit" class="form-control btn btn-primary" name="" value=" Update">
+            </form>
+            </div>
+            <div class="col-md-6">
+            <h5>Expiry Alert</h5>
+            Alert Me When it will expire after <em>{{expiry.value}}</em> days. <br>
+            <br><br>
+            <form class="" method="post" action="/setting/saveexpiry">
+              {% csrf_token %}
+              <h6>Change</h6>
+              <input type="number" class="form-control" name="minimumexpiry" value="{{expiry.value}}">
+              <input type="submit" class="form-control btn btn-primary" name="" value=" Update">
+            </form>
+            </div>
+            </div>
+          </div>
+
+
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,81 @@
+
+<div class="card card-chart" style="padding: 20px;">   
+
+    <h4 class="card-title">Sales</h4>   
+<div class="card-body ">
+
+	  <div class="row">
+	    <input list="saleselectproduct" id="Nname" class="form-control col-lg-2" onchange="getproducttype()" placeholder="Select Product">
+
+	    <datalist id="saleselectproduct">
+        {% for product in products%}
+	        <option value="{{product.id}}">
+           {{product.name}} &nbsp; {{product.code}} &nbsp;  &nbsp; {{product.mg}} 
+          </option>
+        {% endfor %} 
+	    </datalist>
+	    <input type="hidden" id="realNname"  >
+	    <input type="number" id="Nprice"  min="0" class="form-control col-lg-2" placeholder="Price">
+	    <input type="number" id="Npack"  min="0" class="form-control col-lg-2" placeholder="Packet">
+	    <input type="number" id="Ntab" min="0" class="form-control col-lg-2" placeholder="Tablets">
+	    <input type="hidden" id="Ntabs" value="0">
+	    <input type="number" id="Ndiscount" min="0" class="form-control col-lg-2" placeholder="Disc%">
+	    <input type="button" class="form-control col-lg-2" Value="Add" style="" id="add-btn" onclick="addproduct()">
+	  </div>
+
+
+
+
+<form class="from-horizantal" action="salestore/" method="post" style="margin-top:  30px;">
+  {% csrf_token %}
+  <h6>Invoice</h6>
+
+ 
+  <table class="table table-bordered table-responsive"  id="envice" style="background-color: white">
+      <tr>
+        <th style="width: 200px;"><strong>Product</strong></th>
+        <th style="width: 180px;"><strong>Price</strong></th>
+        <th style="width: 180px;"><strong>Packets</strong></th>
+        <th style="width: 180px;"><strong>Tablets</strong></th>
+        <th style="width: 180px;"><strong>Total</strong></th>
+        <th style="width: 180px;"><strong>Discount</strong></th>
+        <th style="width: 200px;"><strong>Receivable</strong></th>
+      </tr>
+      <tfoot>
+        
+        <tr>
+          
+        <td colspan="4"><strong>Total</strong></td>
+        <td><input type="total" name="Ttotal" id="Ttotal" class="form-control" readonly="" placeholder="Total"></td>
+        <td><input type="total" name="Tdiscount" id="Tdiscount" class="form-control" readonly="" placeholder="Discount"></td>
+        <td><input type="total" name="Treceivable" id="Treceivable" class="form-control" readonly="" placeholder="Receivable"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Customer</strong></td>
+          <td colspan="2"><strong>Received</strong></td>
+          <td colspan="2"><strong>Due</strong></td>
+          <td colspan="2"><strong>Loss</strong></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input list="customer" name="customer" id="customer_id" class="form-control" placeholder="Select Customer" onchange="customerselect()" disabled="true">
+            <datalist id="customer">
+               {% for customer in customers %}
+                  <option value="{{customer.id}}">
+                   {{customer}}
+                  </option>
+                {% endfor %}
+            </datalist>   
+            </td>
+          <td colspan="2"><input type="text" id="received" name="received" class="form-control " placeholder="Received" onchange="calculateremaining()"  disabled="true"></td>
+          <td colspan="2"><input type="text" id="dueamount" onchange="calculatelosss()" name="due" class="form-control " placeholder="Due Amount" disabled="true" ></td>
+          <td colspan="2"><input type="text" id="lossamount" name="loss" class="form-control " placeholder="Due Amount" disabled="true" ></td>
+        </tr>
+        <tr>
+          <td colspan="7"><input type="submit" name="" id="save_btn" value="Save" class="btn btn-primary form-control"  disabled="true"></td>
+        </tr>
+      </tfoot>
+  </table>
+</form>
+  </div>
+</div>

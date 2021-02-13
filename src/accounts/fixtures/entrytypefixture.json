@@ -1,0 +1,114 @@
+[
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 1,
+    "fields": {
+      "name": "sale"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 2,
+    "fields": {
+      "name": "sale return"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 3,
+    "fields": {
+      "name": "purchase"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 4,
+    "fields": {
+      "name": "purchase return"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 5,
+    "fields": {
+      "name": "used"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 6,
+    "fields": {
+      "name": "cash receipt"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 7,
+    "fields": {
+      "name": "cash payment"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 8,
+    "fields": {
+      "name": "bank deposit"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 9,
+    "fields": {
+      "name": "bank withdraw"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 10,
+    "fields": {
+      "name": "bank payment"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 11,
+    "fields": {
+      "name": "bank receipt"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 12,
+    "fields": {
+      "name": "receive salary"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 13,
+    "fields": {
+      "name": "pay_salary"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 14,
+    "fields": {
+      "name": "expances"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 15,
+    "fields": {
+      "name": "cash withdraw"
+    }
+  },
+  {
+    "model": "accounts.Entry_Type",
+    "pk": 16,
+    "fields": {
+      "name": "initial"
+    }
+  }
+]

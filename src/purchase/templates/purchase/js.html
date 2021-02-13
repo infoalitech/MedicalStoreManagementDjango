@@ -1,0 +1,178 @@
+
+<script type="text/javascript">
+  function Ncalculate(){
+    var qty=$("#Nqty").val();
+    var name=$("#Nname").val();
+    var pack=$("#Npack").val();
+    var batch=$("#Nbatch").val();
+    var price=$("#Nprice").val();
+    var qtty=Number(qty)*Number(pack);
+    var pricetotal=Number(price)*qtty;
+    var discount=$("#Ndiscount").val();
+    var stax=0;
+    stax=$("#NSTax").val();
+    var expiry=$("#Nexpiry").val();
+    var total=0;
+    var discountt=0;
+    var staxamount=0;
+    staxamount=Number(stax)*qtty;
+    discountt=((discount/100)*price)*qtty;
+    discountt=discountt.toFixed(0); 
+    total=qtty*price;
+    total=total-discountt;
+    total=total+Number(staxamount);
+    $("#Ntotal").val(total);
+    $("#Ndiscountamount").val(discountt);
+    $("#Nstaxamount").val(staxamount);
+    $("#Npricetotal").val(pricetotal);
+
+  }
+  
+ function addproduct(){
+    var qty=$("#Nqty").val();
+    var name=$("#Nname").val();
+    var pack=$("#Npack").val();
+    var batch=$("#Nbatch").val();
+    var price=$("#Nprice").val();
+    var pricetotal=$("#Npricetotal").val();
+    var discount=$("#Ndiscount").val();
+    var discountamount=$("#Ndiscountamount").val();
+    var stax=$("#NSTax").val();
+    var staxamount=$("#Nstaxamount").val();
+    var total=$("#Ntotal").val();
+    var expiry=$("#Nexpiry").val();
+    var s_price=$("#NS_Price").val();
+
+    if (qty=="") {
+      $("#error").html("Please Enter Quantiy"); 
+      $("#Nqty").focus();  }else
+    if (name=="") {
+      $("#error").html("Please Select Product");
+      $("#Nname").focus(); }else
+    if (pack=="") {
+      $("#error").html("Please enter Pack");
+      $("#Npack").focus(); }else
+    if (price=="") {
+      $("#error").html("Please enter Price");
+      $("#Nprice").focus();
+    }else{
+        $("#envice").append('<tr><td><input type="text"   class="form-control" name="product[]"  value="'+name+'" readonly=""></td><td><input type="text"   class="form-control" name="qty[]"      value="'+qty+'" readonly=""></td><td><input type="text"   class="form-control" name="packet[]"   value="'+pack+'" readonly=""></td><td><input type="text"   class="form-control" name="batch[]"    value="'+batch+'" readonly=""></td><td><input type="text" class="form-control" name="price[]"    value="'+price+'" readonly=""><input type="hidden" name="pricetotal[]" value="'+pricetotal+'" ></td><td><input type="text" class="form-control" name="discount[]" value="'+discount+'" readonly=""><input type="hidden" name="discountamount[]" value="'+discountamount+'" readonly=""></td><td><input type="text" class="form-control" name="s_tax[]"    value="'+stax+'" readonly=""><input type="hidden" name="s_taxamount[]"    value="'+staxamount+'" readonly=""></td><td><input type="text" class="form-control" name="total[]"    value="'+total+'" readonly=""></td><td><input type="date"   class="form-control" name="expiry[]"   value="'+expiry+'"></td><td><input type="number"   class="form-control" name="s_price[]"   value="'+s_price+'"></td></tr>');
+        calculate();
+        $("#Nqty").val("");
+        $("#Nname").val("");
+        $("#Npack").val("");
+        $("#Nbatch").val("");
+        $("#Nprice").val("");
+        $("#Ndiscount").val("");
+        $("#Ndiscountamount").val("");
+        $("#NSTax").val("");
+        $("#Nstaxamount").val("");
+        $("#Ntotal").val("");
+        $("#Nexpiry").val("");
+        $("#Nqty").focus();
+
+    }
+  }
+
+  function calculate(){
+    var totall=0.0;
+    var prices = document.getElementsByName('total[]');
+    var n=prices.length;
+    for (var i=0;i<n;i++) 
+    {
+      totall =totall+Number(prices[i].value);
+    }
+    $("#total").val(totall);
+    totall=0.0;
+    var prices = document.getElementsByName('pricetotal[]');
+    var n=prices.length;
+    for (var i=0;i<n;i++) 
+    {
+      totall =totall+Number(prices[i].value);
+    }
+    $("#prri").val(totall);
+totall=0.0;
+    var qty = document.getElementsByName('qty[]');
+    var n=qty.length;
+    for (var i=0;i<n;i++) 
+    {   
+      totall =totall+Number(qty[i].value);
+    }
+    $("#qtty").val(totall);
+totall=0.0;   
+    var disc = document.getElementsByName('discountamount[]');
+    var n=disc.length;
+    for (var i=0;i<n;i++) 
+    {   
+      totall =totall+Number(disc[i].value);
+    }
+    $("#diis").val(totall);
+totall=0.0;   
+    var stax = document.getElementsByName('s_taxamount[]');
+    var n=stax.length;
+    for (var i=0;i<n;i++) 
+    {   
+      totall =totall+Number(stax[i].value);
+    }
+    $("#sttax").val(totall);
+
+
+    calculatenet();
+  }
+  </script>
+  <script type="text/javascript">
+    
+    function supplierselect(){
+      var supplier=$("#supplier").val();
+      if (supplier!="") {
+        // alert("sdhj");
+          var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+          $.ajaxSetup({
+              beforeSend: function(xhr, settings) {
+                  if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                  }
+              }
+          });
+          function csrfSafeMethod(method) {
+              // these HTTP methods do not require CSRF protection
+              return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+          }
+          $.ajax({
+          type:'post', 
+          data:{'supp_id':supplier},
+          url:'/purchase/getsupplier/',
+          success:function(data){          
+              $('#prev_balance').val(data);
+              var total= $('#total').val();
+              var netpayable=Number(total)+Number(data);
+              $('#netpayable').val(netpayable);
+          },
+          error:function(){
+          }
+        });
+
+      }
+    }
+
+    function calculatenet(){
+      var prev= $('#prev_balance').val();
+      var total= $('#total').val();
+      var netreceivable=Number(prev)+Number(total);
+      $('#netpayable').val(netreceivable);
+
+      var paid=$('#paid').val();
+      $("#duepayment").val(netreceivable-paid);     
+
+    }
+
+    function paymenttypeselect(){
+      alert("changed");
+      var selected= $('#paymenttypeid').val();
+      if (selected=="0") {
+        alert(selected);
+        $('#bankselectid').prop("disabled",true);
+      }
+        $('#bankselectid').prop("disabled",false);
+    }
+  </script>

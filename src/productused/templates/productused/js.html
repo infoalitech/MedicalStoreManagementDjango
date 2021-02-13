@@ -1,0 +1,124 @@
+<script type="text/javascript">
+
+
+  function calculate(){
+    var totall=0.0;
+    var prices = document.getElementsByName('ptotal[]');
+    var n=prices.length;
+    for (var i=0;i<n;i++) 
+    {   
+      totall =totall+Number(prices[i].value);
+    }
+    $("#Ttotal").val(totall);
+    var totall=0.0;
+    var prices = document.getElementsByName('pdiscount[]');
+    var n=prices.length;
+    for (var i=0;i<n;i++) 
+    {   
+      totall =totall+Number(prices[i].value);
+    }
+    $("#Tdiscount").val(totall);
+    var totall=0.0;
+    var prices = document.getElementsByName('preceivable[]');
+    var n=prices.length;
+    for (var i=0;i<n;i++) 
+    {   
+      totall =totall+Number(prices[i].value);
+    }
+    $("#Treceivable").val(totall);
+    $("#received").val(totall);
+  }
+</script>
+<script>
+  function tabchange(){
+    var p=$("#Ntabs").val();
+    var q=$("#Ntab").val();
+    if ( Number(q) > Number(p) ) {
+      $("#Ntab").val(p);
+    }  
+    if (Number(q)< 0) {
+      $("#Ntab").val("0");
+    }
+  }
+
+  function getproducttype(){
+    var namme=$("#Nname").val();
+    
+    var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+     $.ajax({
+          type:'post', 
+          data:{'product_id':namme},
+          url:'/sale/getproductprice/',
+          success:function(data){
+            $("#Nprice").val(Number(data));
+          },
+          error:function(){
+          }
+        });
+  }
+  function addproduct(){
+    var namme=$("#Nname").val();
+    var realname=$("#realNname").val();
+    var price=Number($("#Nprice").val());
+    var tab=Number($("#Ntab").val());
+    var tablets=Number($("#Ntabs").val());
+    var pack=Number($("#Npack").val());
+    var discount=Number($("#Ndiscount").val());
+    var tabprice=0;
+    var packprice=0;
+    var total=0;
+    var receivable=0;
+    var discountprice=0;
+    if (namme=="Select By Name") {
+      $("#error").html("Please Select Product");
+      $("#Nname").focus();
+    }else{    
+      if (tab==0  && pack==0) {
+        $("#error").html("Please Select Quantity");
+        $("#Npack").focus();
+      }else{
+
+        if (tab!=0) {
+          tabprice=(price/tablets)*tab;
+        }
+        if (pack!=0) {
+          packprice=price*pack;
+        }
+        total=tabprice+packprice;
+        discountprice=(discount/100)*total;
+        receivable=total-discountprice;
+              $("#envice").append("<tr><td><input type='hidden'  name='pid[]' value='"+namme+"' readonly=''><input type='text'  name='pname[]' value='"+realname+" ' class='form-control'   readonly=''></td><td><input type='text'  name='ppri[]' value='"+price+"' class='form-control' readonly=''></td>  <td><input type='text'  name='ppack[]' value='"+pack+"'  class='form-control'   readonly=''> </td>  <td> <input type='text' name='ptab[]' value='"+tab+"' readonly=''  class='form-control' ></td>  <td> <input type='text' name='ptotal[]' value='"+total+"' readonly=''  class='form-control' ></td> </tr>");
+
+
+              $("#Nname").val('');
+              $("#Nprice").val('');
+              $("#Ntab").val('');
+              $("#Ntabs").val('');
+              $("#Npack").val('');
+              $("#Ndiscount").val('');
+              $("#error").val('');
+              calculate();
+              $("#Nname").focus();
+              $("#save_btn").prop("disabled",false);
+              $("#customer_id").prop("disabled",false);
+              $("#received").prop("disabled",false);
+          }
+    }
+  }
+  
+
+
+
+  
+</script>

@@ -1,0 +1,30 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+
+<div class="row">
+	<div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="\">Home</a></li>
+      <li class="breadcrumb-item"><a href="\productused">Product Used</a></li>
+    </ol>
+
+
+
+            {% include 'productused/form.html'%}
+        <div class="card card-chart">
+          <div class="card-header">
+            <h3>Product Used</h3>
+            {% include 'dashboard/entryshow.html'%}
+          </div>
+      </div>
+    </div>
+
+
+</div>
+
+            {% include 'productused/js.html'%}
+
+{% endblock %}

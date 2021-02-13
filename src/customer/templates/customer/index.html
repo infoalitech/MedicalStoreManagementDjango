@@ -1,0 +1,76 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+<div class="container">
+		
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\customer">Customer</a></li>
+</ol>
+<div class="card">
+	<div class="card-header">
+		<a href="\customer\create\" class="btn btn-primary btn-round text-white  btn-sm pull-right"> Add Customer</a>     
+        <h4 class="card-title">Customers</h4>
+        <div class="dropdown">
+	       <input type="text" id="myInput" class="form-control" onkeyup="myFunction()" placeholder="Search customer.." title="Type in a name">
+        </div>
+	</div>
+	<div class="card-body">
+	    <table id="customertable" id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+	      <thead>
+	        <tr >
+	          <th rowspan="2">Ledger ID</th>
+	          <th rowspan="2">Name</th>
+	          <th rowspan="2">Address</th>
+	          <th rowspan="2">Phone</th>
+	          <th rowspan="2">Cell</th>
+	          <th rowspan="2">Initial Balance</th>
+	          <th rowspan="2">Initial Balance Type</th>
+	          <th rowspan="2" class="disabled-sorting text-right">View</th>
+	        </tr>
+
+	      </thead>
+	      <tbody id="customertable">
+	        {% for customer in customers %}
+	          <tr>
+	            <td>{{customer.ledger.id}}</td>
+	            <td>{{customer.name}}</td>
+	            <td>{{customer.address}}</td>
+	            <td>{{customer.phone}}</td>
+	            <td>{{customer.cell}}</td>
+	            <td>{{customer.initial_balance}}</td>
+	            <td>{{customer.get_initial_balance_db_display}}</td>
+	            <td class="text-right">
+					<a href="\customer\{{customer.id}}"  class="btn bnt-icon btn-primary btn-sm"><i class="now-ui-icons files_paper"></i></a>
+	            </td>
+	          </tr>
+	       {% endfor %}
+	      </tbody>
+	    </table>
+	</div>
+</div>
+
+
+</div>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("customertable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+{% endblock %}

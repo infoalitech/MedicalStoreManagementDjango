@@ -1,0 +1,62 @@
+
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+<div class="row">
+<div class="container">
+  
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\login">Login</a></li>
+</ol>
+<div class="col-lg-6" style="margin: auto">
+    
+            <form role="form" method="POST" action="\login\">
+                {% csrf_token %}
+            <div class="card card-login card-plain">
+                <div class="card-header" style="align-content: center; text-align: center;">
+                <img src="{{ asset('assets/img/now-logo.png" alt="" width="250px">
+                </div>
+                <div class="card-body ">
+                <div class="input-group no-border form-control-lg ">
+                    <span class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="now-ui-icons users_circle-08"></i>&nbsp;&nbsp;&nbsp;
+                </div>
+                    </span>
+                    <input class="form-control " placeholder="Email" type="email" name="email" value="asad07538@gmail.com" required autofocus>
+                </div>
+
+                <div class="input-group no-border form-control-lg ">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="now-ui-icons objects_key-25"></i>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    </div>
+                    <input placeholder="Password" class="form-control " name="password" placeholder="Password" type="password" value="david@pro" required>
+                </div>
+
+                </div>
+                <div class="card-footer ">
+                <button  type = "submit" class="btn btn-primary btn-round btn-lg btn-block mb-3">Get Started</button>
+               <!--  <div class="pull-left">
+                    <h6>
+                    <a href="" class="link footer-link">Create Account</a>
+                    </h6>
+                </div> -->
+                <div class="pull-right">
+                    <h6>
+                    <a href="" class="link footer-link">Forgot Password?</a>
+                    </h6>                
+                </div>
+                </div>
+            </div>
+            </form>
+
+
+</div>
+    
+</div>   
+</div> 
+{% endblock%}

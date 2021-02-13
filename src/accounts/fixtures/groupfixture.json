@@ -1,0 +1,30 @@
+[
+  {
+    "model": "accounts.Group",
+    "pk": 1,
+    "fields": {
+      "name": "asset"
+    }
+  },
+  {
+    "model": "accounts.Group",
+    "pk": 2,
+    "fields": {
+      "name": "liablity"
+    }
+  },
+  {
+    "model": "accounts.Group",
+    "pk": 3,
+    "fields": {
+      "name": "revenue"
+    }
+  },
+  {
+    "model": "accounts.Group",
+    "pk": 4,
+    "fields": {
+      "name": "expances"
+    }
+  }
+]

@@ -1,0 +1,68 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+
+<div class="container">
+	
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\supplier">Supplier</a></li>
+  <li class="breadcrumb-item"><a href="\supplier\show">Show</a></li>
+</ol>
+<div class="card">
+	<div class="card-header">
+		<a href="\supplier\{{supplier.id}}\delete	" class="btn btn-danger  btn-sm btn-round text-white pull-right"> Delete</a>     
+		<a href="\supplier\{{supplier.id}}\edit" class="btn btn-primary  btn-sm btn-round text-white pull-right"> Edit</a> 
+		<a href="\report\ledger\{{supplier.ledger.id}}"  class="btn btn-primary  btn-sm btn-round text-white pull-right">Entries</a>    
+        <h4 class="card-title">Supplier Detail</h4>
+        <div class="dropdown">
+	      
+        </div>
+	</div>
+	<div class="card-body">
+
+		<table class="table table-striped">
+			<tr>
+				<th colspan="4" class="bg-secondary" style="color: white;" >Details</th>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{supplier.name}}</td>
+			</tr>
+			<tr>
+				<th>Phone</th>
+				<td>{{supplier.phone}}</td>
+				<th>Cell</th>
+				<td>{{supplier.cell}}</td>
+			</tr>
+			<tr>
+				<th>email</th>
+				<td>{{supplier.email}}</td>
+				<th>Address</th>
+				<td>{{supplier.addresss}}</td>
+			</tr>
+			<tr>
+				<th>Initial Balance</th>
+				<td>{{supplier.initial_balance}}</td>
+				<th>Initial Balance Type</th>
+				<td>{{supplier.get_initial_balance_db_display}}</td>
+			</tr>
+			<tr>
+				<th>Balance</th>
+				<td>{{balance}}</td>
+				<th>Balance Type</th>
+				<td>{{balance_db}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+</div>
+
+
+
+
+{% endblock %}

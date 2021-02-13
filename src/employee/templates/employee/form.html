@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-name">Name</label>
+  <input type="text" name="name" id="input-name" class="form-control" placeholder="Name" value="{% if employee %} {{employee.name}} {% endif %}" required autofocus>
+  <label id="name-error"></label>
+  </div>
+  <div class="col-lg-6 form-group ">
+  </div>
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-address">address</label>
+  <input type="address" name="address" id="input-address" class="form-control" placeholder="address" value="{% if employee %} {{employee.addresss}} {% endif %}" required>
+  <label id="address-error"></label>
+  </div>
+
+  <div class="col-lg-6 form-group ">
+  <label class="form-control-label" for="input-phone">phone</label>
+  <input type="text" name="phone" id="input-phone" class="form-control" placeholder="phone"  value="{% if employee %} {{employee.phone}} {% endif %}" required>
+  <label id="phone-error"></label>
+  </div>
+  <div class="col-lg-6 form-group ">
+    <label class="form-control-label" for="input-cell">cell</label>
+    <input type="text" name="cell" id="input-cell" class="form-control" placeholder="cell"  value="{% if employee %} {{employee.cell}} {% endif %}" >
+  <label id="cell-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-email">email</label>
+  <input type="email" name="email" id="input-email" class="form-control" placeholder="email"  value="{% if employee %} {{employee.email}} {% endif %}" >
+  <label id="tablet-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-initial_balances">Initial Balance</label>
+  <input type="number" name="initial_balance" id="input-initial_balances" class="form-control" placeholder="Stock Balance"  value="{% if employee %} {{employee.initial_balance}} {% endif %}">
+  <label id="initial_balances-error"></label>
+  </div>
+  <div class="col-lg-6 form-group " >
+  <label class="form-control-label" for="input-initial_balance_db">Initial Balance Type</label>
+  <select class="form-control" name="initial_balance_db" >
+    <option value="D" value="{% if employee.initial_balance_db == 'D' %}{% endif %}">Debit</option>
+    <option value="C" value="{% if employee.initial_balance_db == 'C' %}{% endif %}">Credit</option>
+  </select>
+  <label id="tablet-error"></label>
+  </div>
+</div>

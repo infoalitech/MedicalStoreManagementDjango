@@ -1,0 +1,34 @@
+{% extends "dashboard\layout\layout.html" %}
+
+
+{% block content %}
+
+<div class="container">
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="\">Home</a></li>
+  <li class="breadcrumb-item"><a href="\supplier">Supplier</a></li>
+  <li class="breadcrumb-item"><a href="\supplier\create">Create</a></li>
+</ol>
+<div class="card">
+	<div class="card-header">
+		<h6 class="heading-small text-muted mb-4">New Supplier</h6>
+	</div>
+	<div class="card-body">
+		<form action="\supplier\store\" method="post">
+			{% csrf_token %}
+
+          {% include 'supplier/form.html' %}
+    <div class="form-group " >
+      <input type="submit" class="btn btn-primary form-control" value="Save">
+      </div>
+
+		</form>
+	</div>
+	<div class="card-footer">
+		
+	</div>
+</div>
+</div>
+
+{% endblock %}
